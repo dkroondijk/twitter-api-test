@@ -1,9 +1,14 @@
-<h1>Hello!</h1>
+<h1>My Twitter Feed</h1>
 
 <%# $client.sample do |object| %>
   <%#= object.text if object.is_a?(Twitter::Tweet) %>
 <%# end %>
 
-<%= $client.home_timeline %>
+<% $client.home_timeline.each do |tweet| %>
+  <%= tweet.user.screen_name %>
+  <ul>
+    <li><%= tweet.text %></li>
+  </ul>
+<% end %>  
 
 <%# $client.update("Another tweet with the Rails Twitter API!") %>
